@@ -25,8 +25,8 @@ public class LicenseController {
 
     @GetMapping("/{licenseId}")
     public ResponseEntity<License> getLicense(@PathVariable(name = "licenseId") String licenseId) throws MalformedURLException {
+        License license = licenseService.getLicense(Long.valueOf(licenseId));
 
-        License license = licenseService.getLicense(licenseId);
         license.add(
                 linkTo(methodOn(LicenseController.class)
                         .getLicense(licenseId)).withSelfRel());
